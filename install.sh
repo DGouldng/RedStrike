@@ -1,17 +1,15 @@
 #!/bin/bash
 
-echo "🔧 RedStrike Installer - Starting Setup..."
+echo "[*] Installing RedStrike dependencies..."
 
-# Optional: Update system (for Linux users)
-# sudo apt update && sudo apt upgrade -y
+# Update & install base dependencies
+sudo apt update && sudo apt install -y python3 python3-pip git
 
-echo "📦 Installing required Python dependencies..."
-pip3 install -r requirements.txt
+# Install Python packages
+pip3 install flask requests python-whois pyautogui
 
-echo "🛠️ Making core/menu.py executable..."
-chmod +x core/menu.py
-
+echo "[+] All dependencies installed successfully."
 echo "✅ RedStrike is now ready to use!"
-echo "👉 Run it with: python3 core/menu.py"
+echo "[+] 👉 You can now run RedStrike with: python3 core/menu.py"
 
 echo "🚀 Enjoy using RedStrike!"
