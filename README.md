@@ -54,7 +54,6 @@ pip install flask requests python-whois
 ### 🚀 Usage
 ```bash
 python3 core/menu.py
-
 ```
 ### Navigate the menu to launch modules in:
 
