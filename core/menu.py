@@ -6,23 +6,38 @@ import sys
 
 BASE_PATH = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
 
-def show_banner():
-    os.system("clear")
-    print(r"""
+def clear_screen():
+    os.system("cls" if os.name == "nt" else "clear")
 
+def show_banner():
+    clear_screen()
+    print(r"""
 ██   ██  █████   ██████ ██   ██ ██████   ██████   ██████  ██    ██ ██      ██████  
 ██   ██ ██   ██ ██      ██  ██  ██   ██ ██       ██    ██ ██    ██ ██      ██   ██ 
 ███████ ███████ ██      █████   ██   ██ ██   ███ ██    ██ ██    ██ ██      ██   ██ 
 ██   ██ ██   ██ ██      ██  ██  ██   ██ ██    ██ ██    ██ ██    ██ ██      ██   ██ 
 ██   ██ ██   ██  ██████ ██   ██ ██████   ██████   ██████   ██████  ███████ ██████  
 
+            \t \t🔻REDSTRIKE | Red Team Toolkit
 [+] Welcome to RedStrike - A Modular Penetration Testing Framework
 [+] Developed by: DGould
 [+] Version: 1.0
 [+] Use responsibly and ethically!
 """)
-    
-print("🔻 REDSTRIKE | Red Team Toolkit\n")
+
+def run_script(path):
+    try:
+        subprocess.run(["python3", path], check=True)
+    except Exception as e:
+        print(f"[!] Error running {path}: {e}")
+
+def view_logs(filepath):
+    try:
+        with open(filepath, "r") as f:
+            print(f.read())
+    except FileNotFoundError:
+        print("[!] Log file not found.")
+    input("\n[Press Enter to return to menu]")
 
 def recon_menu():
     while True:
@@ -37,18 +52,17 @@ def recon_menu():
         choice = input("Select option: ")
 
         if choice == "1":
-            os.system("python3 recon/ip_tracker.py")
+            run_script("recon/ip_tracker.py")
         elif choice == "2":
-            os.system("python3 recon/subdomain_finder.py")
+            run_script("recon/subdomain_finder.py")
         elif choice == "3":
-            os.system("python3 recon/port_scanner.py")
+            run_script("recon/port_scanner.py")
         elif choice == "4":
-            os.system("python3 recon/whois_dns.py")
+            run_script("recon/whois_dns.py")
         elif choice == "0":
             break
         else:
             print("[!] Invalid choice")
-
 
 def phishing_menu():
     while True:
@@ -57,13 +71,13 @@ def phishing_menu():
         print("1. Launch Tracker (Ngrok + Flask)")
         print("2. View Visitor Logs")
         print("0. Back\n")
+
         choice = input("Select option: ")
 
         if choice == "1":
-            os.system("python3 phishing/ngrok_host.py")
+            run_script("phishing/ngrok_host.py")
         elif choice == "2":
-            os.system("cat phishing/visitors.log")
-            input("\n[Press Enter to return to menu]")
+            view_logs("phishing/visitors.log")
         elif choice == "0":
             break
         else:
@@ -72,7 +86,7 @@ def phishing_menu():
 def postex_menu():
     while True:
         show_banner()
-        print("== POST-EXPLOITATION ==")
+        print("== POST-EXPLOITATION TOOLS ==")
         print("1. Reverse Shell")
         print("2. Screenshot Capture")
         print("3. File Exfiltration")
@@ -81,11 +95,11 @@ def postex_menu():
         choice = input("Select option: ")
 
         if choice == "1":
-            os.system("python3 postex/reverse_shell.py")
+            run_script("postex/reverse_shell.py")
         elif choice == "2":
-            os.system("python3 postex/screenshot.py")
+            run_script("postex/screenshot.py")
         elif choice == "3":
-            os.system("python3 postex/file_exfil.py")
+            run_script("postex/file_exfil.py")
         elif choice == "0":
             break
         else:
@@ -94,7 +108,7 @@ def postex_menu():
 def c2_menu():
     while True:
         show_banner()
-        print("== C2 TOOLS ==")
+        print("== C2 COMMAND & CONTROL ==")
         print("1. Start C2 Server")
         print("2. Launch Agent (connect to C2)")
         print("0. Back\n")
@@ -102,14 +116,13 @@ def c2_menu():
         choice = input("Select option: ")
 
         if choice == "1":
-            os.system("python3 c2/c2_server.py")
+            run_script("c2/c2_server.py")
         elif choice == "2":
-            os.system("python3 c2/agent.py")
+            run_script("c2/agent.py")
         elif choice == "0":
             break
         else:
             print("[!] Invalid choice")
-
 
 def list_modules(path):
     modules = []
@@ -140,7 +153,7 @@ def dynamic_menu(section_name, folder):
         return
 
     while True:
-        os.system("clear")
+        clear_screen()
         print(f"[ {section_name.upper()} MODULES ]\n")
         for i, (name, _, _) in enumerate(modules, start=1):
             print(f"{i}. {name}")
@@ -177,10 +190,17 @@ def main_menu():
             postex_menu()
         elif choice == "4":
             c2_menu()
-        elif choice == "q":
+        elif choice.lower() == "q":
+            print("\n[!] Exiting RedStrike. Goodbye!\n")
             sys.exit()
         else:
             print("[!] Invalid choice")
 
 if __name__ == "__main__":
-    main_menu()
+    try:
+        main_menu()
+    except KeyboardInterrupt:
+        print("\n[!] Interrupted. Exiting RedStrike.")
+        sys.exit()
+
+# End of file
