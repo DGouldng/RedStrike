@@ -47,8 +47,10 @@ chmod +x install.sh
 
 ```
 ### If needed manually:
-- pip install flask requests python-whois
+```
+pip install flask requests python-whois
 
+```
 ### 🚀 Usage
 ```bash
 python3 core/menu.py
