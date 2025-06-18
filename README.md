@@ -1,5 +1,5 @@
 
-# RedStrike ⚔️💀
+# DGould RedStrike ⚔️💀
 
 A **modular Red Team offensive toolkit** for penetration testing and adversary simulation.  
 Created by **DGould** — for **educational and ethical use only**.
