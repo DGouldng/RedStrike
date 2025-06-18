@@ -11,6 +11,7 @@ def clear_screen():
 
 def show_banner():
     clear_screen()
+    print("\033[38;2;255;215;0mTrue gold (RGB: 255,215,0)\033[0m")
     print(r"""
 ██   ██  █████   ██████ ██   ██ ██████   ██████   ██████  ██    ██ ██      ██████  
 ██   ██ ██   ██ ██      ██  ██  ██   ██ ██       ██    ██ ██    ██ ██      ██   ██ 
@@ -24,6 +25,8 @@ def show_banner():
 [+] Version: 1.0
 [+] Use responsibly and ethically!
 """)
+    
+print("\033[0m")
 
 def run_script(path):
     try:
