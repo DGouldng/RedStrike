@@ -73,17 +73,11 @@ Telegram bot token is required for phishing/tracker.py modules
 1. Create a bot using @BotFather → get your bot token.
 2. Get your Chat ID from @userinfobot.
 3. In phishing/tracker.py, replace:
-``` bash
-    python
+```
 TELEGRAM_TOKEN = "YOUR_BOT_TOKEN"
 CHAT_ID = "YOUR_CHAT_ID"
 
 ```
-4. Save and run: 
-```bash
-python3 phishing/tracker.py
-```
-
 ⚠️ This module uses ipinfo.io. Get a free token from https://ipinfo.io/signup and replace it in tracker.py.
 #### 🔐 Keep your token and chat ID secret.
 
