@@ -65,6 +65,28 @@ Post-Exploitation
 
 C2 Server & Agents
 
+### Hints
+
+Telegram token bot is require for phishing/tracker.py modules
+
+### 📩 Telegram Setup for tracker.py
+1. Create a bot using @BotFather → get your bot token.
+2. Get your Chat ID from @userinfobot.
+3. In phishing/tracker.py, replace:
+``` bash
+    python
+TELEGRAM_TOKEN = "YOUR_BOT_TOKEN"
+CHAT_ID = "YOUR_CHAT_ID"
+
+```
+4. Save and run: 
+```bash
+python3 phishing/tracker.py
+```
+#### 🔐 Keep your token and chat ID secret.
+
+### **Note**: This is a basic setup, for full functionality, you may need to configure your environment and modules according to your needs.
+
 ### ⚠️ Legal Disclaimer
 This tool is designed for authorized security testing, education, and learning.
 Do not use RedStrike against systems without explicit permission.
