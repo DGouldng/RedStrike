@@ -78,7 +78,7 @@ TELEGRAM_TOKEN = "YOUR_BOT_TOKEN"
 CHAT_ID = "YOUR_CHAT_ID"
 
 ```
-⚠️ This module uses ipinfo.io. Get a free token from https://ipinfo.io/signup and replace it in tracker.py.
+⚠️ This module uses ipinfo.io. Get a free token from https://ipinfo.io/signup and replace it in the <script> in tracker.py.
 #### 🔐 Keep your token and chat ID secret.
 
 ### **Conclusion**: 
