@@ -30,6 +30,8 @@ echo "[3/4] 🐍 Installing Python dependencies (Flask, Requests, PyAutoGUI, WHO
 (pip3 install flask requests python-whois pyautogui > /dev/null 2>&1) &
 spinner
 echo "✅ Python packages installed."
+echo "[3/4] 🐍 Installing additional Python packages (Flask, Requests, Pyperclip)..."
+pip3 install flask requests pyperclip
 
 echo "[4/4] 🌐 Checking ngrok installation..."
 if ! command -v ngrok &> /dev/null

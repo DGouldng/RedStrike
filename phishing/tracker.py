@@ -2,11 +2,13 @@
 # These tools will simulate a phishing landing page with basic device fingerprinting and logging.
 #!/usr/bin/env python3
 from flask import Flask, request, render_template_string
+from flask import Flask, request
 import datetime
+import os
 
 app = Flask(__name__)
 
-log_file = "phishing/visitors.log"
+LOG_FILE = "phishing/visitors.log"
 
 HTML_PAGE = """
 <!DOCTYPE html>
@@ -31,16 +33,20 @@ HTML_PAGE = """
 </html>
 """
 
-@app.route("/")
-def home():
-    return render_template_string(HTML_PAGE)
+@app.route('/')
+def track():
+    ip = request.remote_addr
+    user_agent = request.headers.get('User-Agent')
+    now = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
 
-@app.route("/log", methods=["POST"])
-def log():
-    data = request.get_json()
-    with open(log_file, "a") as f:
-        f.write(f"{datetime.datetime.now()} - {request.remote_addr} - {data}\n")
-    return "OK"
+    log_entry = f"[{now}] IP: {ip}, Agent: {user_agent}\n"
+    print(log_entry.strip())
+
+    with open(LOG_FILE, "a") as f:
+        f.write(log_entry)
+
+    return "<h1>404 Not Found</h1>", 404  # Looks like a broken page
 
 if __name__ == "__main__":
+    os.makedirs("phishing", exist_ok=True)
     app.run(host="0.0.0.0", port=5000)
