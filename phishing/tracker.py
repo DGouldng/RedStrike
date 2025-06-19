@@ -56,7 +56,9 @@ HTML_PAGE = """
       userAgent: navigator.userAgent
     };
 
-    fetch("https://ipinfo.io/json?token=78e4d2995b859d")
+   // Add your token below
+  const token = "YOUR_IPINFO_TOKEN";
+  fetch(`https://ipinfo.io/json?token=${token}`)
       .then(res => res.json())
       .then(loc => {
         const data = Object.assign({}, loc, fp);

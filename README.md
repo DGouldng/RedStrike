@@ -67,7 +67,7 @@ C2 Server & Agents
 
 ### Hints
 
-Telegram token bot is require for phishing/tracker.py modules
+Telegram bot token is required for phishing/tracker.py modules
 
 ### 📩 Telegram Setup for tracker.py
 1. Create a bot using @BotFather → get your bot token.
@@ -83,9 +83,12 @@ CHAT_ID = "YOUR_CHAT_ID"
 ```bash
 python3 phishing/tracker.py
 ```
+
+⚠️ This module uses ipinfo.io. Get a free token from https://ipinfo.io/signup and replace it in tracker.py.
 #### 🔐 Keep your token and chat ID secret.
 
-### **Note**: This is a basic setup, for full functionality, you may need to configure your environment and modules according to your needs.
+### **Conclusion**: 
+This set up will send the visitor's credential to the telegram info provided. This is a basic example and can be modified to suit your needs. Please be aware that this is is for educational purposes only. Do not use this for malicious activities.
 
 ### ⚠️ Legal Disclaimer
 This tool is designed for authorized security testing, education, and learning.
