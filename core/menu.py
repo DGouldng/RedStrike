@@ -11,28 +11,30 @@ def clear_screen():
 
 def show_banner():
     clear_screen()
-    print("\033[38;2;255;215;0mTrue gold (RGB: 255,215,0)\033[0m")
-    print(r"""
+    print("\033[93m")  # Start gold
+    print(r""" 
 ██   ██  █████   ██████ ██   ██ ██████   ██████   ██████  ██    ██ ██      ██████  
 ██   ██ ██   ██ ██      ██  ██  ██   ██ ██       ██    ██ ██    ██ ██      ██   ██ 
 ███████ ███████ ██      █████   ██   ██ ██   ███ ██    ██ ██    ██ ██      ██   ██ 
 ██   ██ ██   ██ ██      ██  ██  ██   ██ ██    ██ ██    ██ ██    ██ ██      ██   ██ 
 ██   ██ ██   ██  ██████ ██   ██ ██████   ██████   ██████   ██████  ███████ ██████  
 
-            \t \t🔻REDSTRIKE | Red Team Toolkit
+                    🔻REDSTRIKE | Red Team Toolkit
 [+] Welcome to RedStrike - A Modular Penetration Testing Framework
 [+] Developed by: DGould
 [+] Version: 1.0
 [+] Use responsibly and ethically!
 """)
-    
-print("\033[0m")
+    print("\033[0m")  # Reset color
 
 def run_script(path):
+    print(f"\n[+] Running: {path}\n")
     try:
         subprocess.run(["python3", path], check=True)
     except Exception as e:
         print(f"[!] Error running {path}: {e}")
+    input("\n[Press Enter to return to menu...]")  # This prevents instant clear
+
 
 def view_logs(filepath):
     try:
